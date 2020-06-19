@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AzhioFinans_ProjectModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ManageProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="TypeProp" Type="int" />
+          <Property Name="DateOfHouse" Type="nvarchar(max)" />
+          <Property Name="DateOfFloor" Type="nvarchar(max)" />
+          <Property Name="DedlineHouse" Type="nvarchar(max)" />
+          <Property Name="DedlineFloor" Type="nvarchar(max)" />
+          <Property Name="DateSellHouse" Type="nvarchar(max)" />
+          <Property Name="DateSellFloor" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RentProperty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="TypeProp" Type="int" Nullable="false" />
+          <Property Name="AddressHouse" Type="nvarchar(max)" />
+          <Property Name="PriceHouse" Type="nvarchar(max)" />
+          <Property Name="AddressFloor" Type="nvarchar(max)" />
+          <Property Name="PriceFloor" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Хранилище AzhioFinans_ProjectModelContainer">
+          <EntitySet Name="ManageProperty" EntityType="Self.ManageProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentProperty" EntityType="Self.RentProperty" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AzhioFinans_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ManageProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeProp" Type="Int32" />
+          <Property Name="DateOfHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DedlineHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DedlineFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateSellHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateSellFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RentProperty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeProp" Type="Int32" Nullable="false" />
+          <Property Name="AddressHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddressFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AzhioFinans_ProjectEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ManageProperty" EntityType="Self.ManageProperty" />
+          <EntitySet Name="RentProperty" EntityType="Self.RentProperty" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AzhioFinans_ProjectModelContainer" CdmEntityContainer="AzhioFinans_ProjectEntities4">
+          <EntitySetMapping Name="ManageProperty">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.ManageProperty">
+              <MappingFragment StoreEntitySet="ManageProperty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="TypeProp" ColumnName="TypeProp" />
+                <ScalarProperty Name="DateOfHouse" ColumnName="DateOfHouse" />
+                <ScalarProperty Name="DateOfFloor" ColumnName="DateOfFloor" />
+                <ScalarProperty Name="DedlineHouse" ColumnName="DedlineHouse" />
+                <ScalarProperty Name="DedlineFloor" ColumnName="DedlineFloor" />
+                <ScalarProperty Name="DateSellHouse" ColumnName="DateSellHouse" />
+                <ScalarProperty Name="DateSellFloor" ColumnName="DateSellFloor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentProperty">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.RentProperty">
+              <MappingFragment StoreEntitySet="RentProperty">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="TypeProp" ColumnName="TypeProp" />
+                <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
+                <ScalarProperty Name="PriceHouse" ColumnName="PriceHouse" />
+                <ScalarProperty Name="AddressFloor" ColumnName="AddressFloor" />
+                <ScalarProperty Name="PriceFloor" ColumnName="PriceFloor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

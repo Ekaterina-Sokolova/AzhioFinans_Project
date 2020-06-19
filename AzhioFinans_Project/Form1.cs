@@ -10,11 +10,48 @@ using System.Windows.Forms;
 
 namespace AzhioFinans_Project
 {
-    public partial class Form1 : Form
+    public partial class FormMenu : Form
     {
-        public Form1()
+        public FormMenu()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonRentProper_Click(object sender, EventArgs e)
+        {
+            Form formRentprop = new FormRentProp();
+            formRentprop.Show();
+        }
+
+        private void buttonPropManage_Click(object sender, EventArgs e)
+        {
+            Form formManageprop = new FormManageProp();
+            formManageprop.Show();
+        }
+
+        private void buttonConsultInvest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBuyBussinesOrAction_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSellBussinesOrAction_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
