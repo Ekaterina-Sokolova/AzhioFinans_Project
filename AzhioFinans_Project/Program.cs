@@ -8,7 +8,7 @@ namespace AzhioFinans_Project
 {
     static class Program
     {
-        public static AzhioFinans_ProjectEntities9 ADb = new AzhioFinans_ProjectEntities9();
+        public static AzhioFinans_ProjectEntities12 ADb = new AzhioFinans_ProjectEntities12();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -17,7 +17,7 @@ namespace AzhioFinans_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            Application.Run(new FormAutorization());
         }
     }
 }

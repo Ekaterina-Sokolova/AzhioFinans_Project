@@ -17,6 +17,7 @@ namespace AzhioFinans_Project
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SellAction()
         {
+            this.ConsultAction = new HashSet<ConsultAction>();
             this.SellsAction = new HashSet<SellsAction>();
         }
     
@@ -25,6 +26,8 @@ namespace AzhioFinans_Project
         public string DateSell { get; set; }
         public string PriceSell { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ConsultAction> ConsultAction { get; set; }
         public virtual ManageProperty ManageProperty { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SellsAction> SellsAction { get; set; }

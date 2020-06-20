@@ -5,6 +5,25 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище AzhioFinans_ProjectModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="TypeUser" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ConsultAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSotr" Type="int" Nullable="false" />
+          <Property Name="IdAction" Type="int" Nullable="false" />
+          <Property Name="Qwen" Type="nvarchar(max)" />
+          <Property Name="Actual" Type="int" />
+        </EntityType>
         <EntityType Name="ConsultInvest">
           <Key>
             <PropertyRef Name="Id" />
@@ -64,6 +83,30 @@
           <Property Name="DateSells" Type="nvarchar(max)" />
           <Property Name="PriceSells" Type="nvarchar(max)" />
         </EntityType>
+        <Association Name="FK_ConsultAction_ConsultInvest">
+          <End Role="ConsultInvest" Type="Self.ConsultInvest" Multiplicity="1" />
+          <End Role="ConsultAction" Type="Self.ConsultAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultInvest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultAction">
+              <PropertyRef Name="IdSotr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultAction_SellAction">
+          <End Role="SellAction" Type="Self.SellAction" Multiplicity="1" />
+          <End Role="ConsultAction" Type="Self.ConsultAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellAction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultAction">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ConsultInvest_ManageProperty">
           <End Role="ManageProperty" Type="Self.ManageProperty" Multiplicity="1" />
           <End Role="ConsultInvest" Type="Self.ConsultInvest" Multiplicity="*" />
@@ -101,11 +144,21 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище AzhioFinans_ProjectModelContainer">
+          <EntitySet Name="Autorization" EntityType="Self.Autorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConsultAction" EntityType="Self.ConsultAction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConsultInvest" EntityType="Self.ConsultInvest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ManageProperty" EntityType="Self.ManageProperty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RentProperty" EntityType="Self.RentProperty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SellAction" EntityType="Self.SellAction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SellsAction" EntityType="Self.SellsAction" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ConsultAction_ConsultInvest" Association="Self.FK_ConsultAction_ConsultInvest">
+            <End Role="ConsultInvest" EntitySet="ConsultInvest" />
+            <End Role="ConsultAction" EntitySet="ConsultAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultAction_SellAction" Association="Self.FK_ConsultAction_SellAction">
+            <End Role="SellAction" EntitySet="SellAction" />
+            <End Role="ConsultAction" EntitySet="ConsultAction" />
+          </AssociationSet>
           <AssociationSet Name="FK_ConsultInvest_ManageProperty" Association="Self.FK_ConsultInvest_ManageProperty">
             <End Role="ManageProperty" EntitySet="ManageProperty" />
             <End Role="ConsultInvest" EntitySet="ConsultInvest" />
@@ -124,6 +177,27 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AzhioFinans_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ConsultAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSotr" Type="Int32" Nullable="false" />
+          <Property Name="IdAction" Type="Int32" Nullable="false" />
+          <Property Name="Qwen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Actual" Type="Int32" />
+          <NavigationProperty Name="ConsultInvest" Relationship="Self.FK_ConsultAction_ConsultInvest" FromRole="ConsultAction" ToRole="ConsultInvest" />
+          <NavigationProperty Name="SellAction" Relationship="Self.FK_ConsultAction_SellAction" FromRole="ConsultAction" ToRole="SellAction" />
+        </EntityType>
         <EntityType Name="ConsultInvest">
           <Key>
             <PropertyRef Name="Id" />
@@ -134,6 +208,7 @@
           <Property Name="PlaceInvest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ActualInvest" Type="Int32" Nullable="false" />
           <Property Name="ColInvest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsultAction" Relationship="Self.FK_ConsultAction_ConsultInvest" FromRole="ConsultInvest" ToRole="ConsultAction" />
           <NavigationProperty Name="ManageProperty" Relationship="Self.FK_ConsultInvest_ManageProperty" FromRole="ConsultInvest" ToRole="ManageProperty" />
         </EntityType>
         <EntityType Name="ManageProperty">
@@ -176,6 +251,7 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="DateSell" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PriceSell" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsultAction" Relationship="Self.FK_ConsultAction_SellAction" FromRole="SellAction" ToRole="ConsultAction" />
           <NavigationProperty Name="ManageProperty" Relationship="Self.FK_SellAction_ManageProperty" FromRole="SellAction" ToRole="ManageProperty" />
           <NavigationProperty Name="SellsAction" Relationship="Self.FK_SellsAction_SellAction" FromRole="SellAction" ToRole="SellsAction" />
         </EntityType>
@@ -189,6 +265,30 @@
           <Property Name="PriceSells" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SellAction" Relationship="Self.FK_SellsAction_SellAction" FromRole="SellsAction" ToRole="SellAction" />
         </EntityType>
+        <Association Name="FK_ConsultAction_ConsultInvest">
+          <End Role="ConsultInvest" Type="Self.ConsultInvest" Multiplicity="1" />
+          <End Role="ConsultAction" Type="Self.ConsultAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultInvest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultAction">
+              <PropertyRef Name="IdSotr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultAction_SellAction">
+          <End Role="SellAction" Type="Self.SellAction" Multiplicity="1" />
+          <End Role="ConsultAction" Type="Self.ConsultAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellAction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultAction">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ConsultInvest_ManageProperty">
           <End Role="ManageProperty" Type="Self.ManageProperty" Multiplicity="1" />
           <End Role="ConsultInvest" Type="Self.ConsultInvest" Multiplicity="*" />
@@ -225,12 +325,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AzhioFinans_ProjectEntities9" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AzhioFinans_ProjectEntities12" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autorization" EntityType="Self.Autorization" />
+          <EntitySet Name="ConsultAction" EntityType="Self.ConsultAction" />
           <EntitySet Name="ConsultInvest" EntityType="Self.ConsultInvest" />
           <EntitySet Name="ManageProperty" EntityType="Self.ManageProperty" />
           <EntitySet Name="RentProperty" EntityType="Self.RentProperty" />
           <EntitySet Name="SellAction" EntityType="Self.SellAction" />
           <EntitySet Name="SellsAction" EntityType="Self.SellsAction" />
+          <AssociationSet Name="FK_ConsultAction_ConsultInvest" Association="Self.FK_ConsultAction_ConsultInvest">
+            <End Role="ConsultInvest" EntitySet="ConsultInvest" />
+            <End Role="ConsultAction" EntitySet="ConsultAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultAction_SellAction" Association="Self.FK_ConsultAction_SellAction">
+            <End Role="SellAction" EntitySet="SellAction" />
+            <End Role="ConsultAction" EntitySet="ConsultAction" />
+          </AssociationSet>
           <AssociationSet Name="FK_ConsultInvest_ManageProperty" Association="Self.FK_ConsultInvest_ManageProperty">
             <End Role="ManageProperty" EntitySet="ManageProperty" />
             <End Role="ConsultInvest" EntitySet="ConsultInvest" />
@@ -249,7 +359,28 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище AzhioFinans_ProjectModelContainer" CdmEntityContainer="AzhioFinans_ProjectEntities9">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AzhioFinans_ProjectModelContainer" CdmEntityContainer="AzhioFinans_ProjectEntities12">
+          <EntitySetMapping Name="Autorization">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.Autorization">
+              <MappingFragment StoreEntitySet="Autorization">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TypeUser" ColumnName="TypeUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsultAction">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.ConsultAction">
+              <MappingFragment StoreEntitySet="ConsultAction">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdSotr" ColumnName="IdSotr" />
+                <ScalarProperty Name="IdAction" ColumnName="IdAction" />
+                <ScalarProperty Name="Qwen" ColumnName="Qwen" />
+                <ScalarProperty Name="Actual" ColumnName="Actual" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ConsultInvest">
             <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.ConsultInvest">
               <MappingFragment StoreEntitySet="ConsultInvest">

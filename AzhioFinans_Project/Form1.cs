@@ -15,8 +15,18 @@ namespace AzhioFinans_Project
         public FormMenu()
         {
             InitializeComponent();
+            if (FormAutorization.auto.type == "common")
+            {
+                buttonSellBussinesOrAction.Enabled = false;
+                buttonConsultCorp.Enabled = false;
+            }
+            if(FormAutorization.auto.type == "sotrudnik")
+            {
+                buttonConsultCorp.Enabled = false;
+            }
+            labelHello.Text = "Приветствую тебя, " + FormAutorization.auto.login;
         }
-
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -24,7 +34,8 @@ namespace AzhioFinans_Project
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+            Form forca = new FormConsultAction();
+            forca.Show();
         }
 
         private void buttonRentProper_Click(object sender, EventArgs e)

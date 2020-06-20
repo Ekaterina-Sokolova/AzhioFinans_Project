@@ -192,8 +192,9 @@
             this.Controls.Add(this.labelPriceSells);
             this.Controls.Add(this.labelDateSells);
             this.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormSellsAction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormSellsAction";
             this.ResumeLayout(false);
             this.PerformLayout();

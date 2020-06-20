@@ -14,6 +14,12 @@ namespace AzhioFinans_Project
     
     public partial class ConsultInvest
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ConsultInvest()
+        {
+            this.ConsultAction = new HashSet<ConsultAction>();
+        }
+    
         public int Id { get; set; }
         public string NamesurnameSotr { get; set; }
         public int IdUser { get; set; }
@@ -21,6 +27,8 @@ namespace AzhioFinans_Project
         public int ActualInvest { get; set; }
         public string ColInvest { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ConsultAction> ConsultAction { get; set; }
         public virtual ManageProperty ManageProperty { get; set; }
     }
 }
