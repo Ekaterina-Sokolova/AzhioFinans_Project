@@ -55,11 +55,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultInvest.cs">
+      <DependentUpon>Model1212.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConsultInvest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultInvest.Designer.cs">
+      <DependentUpon>FormConsultInvest.cs</DependentUpon>
     </Compile>
     <Compile Include="FormManageProp.cs">
       <SubType>Form</SubType>
@@ -73,37 +82,64 @@
     <Compile Include="FormRentProp.Designer.cs">
       <DependentUpon>FormRentProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSellAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSellAction.Designer.cs">
+      <DependentUpon>FormSellAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSellsAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSellsAction.Designer.cs">
+      <DependentUpon>FormSellsAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageProperty.cs">
-      <DependentUpon>Model1121.tt</DependentUpon>
+      <DependentUpon>Model1212.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1121.Context.cs">
+    <Compile Include="Model1212.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1121.Context.tt</DependentUpon>
+      <DependentUpon>Model1212.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1121.cs">
+    <Compile Include="Model1212.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1121.tt</DependentUpon>
+      <DependentUpon>Model1212.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1121.Designer.cs">
+    <Compile Include="Model1212.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1121.edmx</DependentUpon>
+      <DependentUpon>Model1212.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentProperty.cs">
-      <DependentUpon>Model1121.tt</DependentUpon>
+      <DependentUpon>Model1212.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellAction.cs">
+      <DependentUpon>Model1212.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellsAction.cs">
+      <DependentUpon>Model1212.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultInvest.resx">
+      <DependentUpon>FormConsultInvest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormManageProp.resx">
       <DependentUpon>FormManageProp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRentProp.resx">
       <DependentUpon>FormRentProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSellAction.resx">
+      <DependentUpon>FormSellAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSellsAction.resx">
+      <DependentUpon>FormSellsAction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,12 +151,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="Model1121.edmx">
+    <EntityDeploy Include="Model1212.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1121.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1212.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1121.edmx.diagram">
-      <DependentUpon>Model1121.edmx</DependentUpon>
+    <None Include="Model1212.edmx.diagram">
+      <DependentUpon>Model1212.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -143,15 +179,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1121.Context.tt">
+    <Content Include="Model1212.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1121.edmx</DependentUpon>
-      <LastGenOutput>Model1121.Context.cs</LastGenOutput>
+      <DependentUpon>Model1212.edmx</DependentUpon>
+      <LastGenOutput>Model1212.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1121.tt">
+    <Content Include="Model1212.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1121.edmx</DependentUpon>
-      <LastGenOutput>Model1121.cs</LastGenOutput>
+      <DependentUpon>Model1212.edmx</DependentUpon>
+      <LastGenOutput>Model1212.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

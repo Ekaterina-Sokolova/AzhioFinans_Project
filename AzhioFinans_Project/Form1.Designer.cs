@@ -82,7 +82,7 @@
             // 
             // buttonConsultCorp
             // 
-            this.buttonConsultCorp.Location = new System.Drawing.Point(30, 430);
+            this.buttonConsultCorp.Location = new System.Drawing.Point(30, 608);
             this.buttonConsultCorp.Name = "buttonConsultCorp";
             this.buttonConsultCorp.Size = new System.Drawing.Size(400, 56);
             this.buttonConsultCorp.TabIndex = 4;
@@ -92,21 +92,21 @@
             // 
             // buttonBuyBussinesOrAction
             // 
-            this.buttonBuyBussinesOrAction.Location = new System.Drawing.Point(30, 507);
+            this.buttonBuyBussinesOrAction.Location = new System.Drawing.Point(30, 433);
             this.buttonBuyBussinesOrAction.Name = "buttonBuyBussinesOrAction";
             this.buttonBuyBussinesOrAction.Size = new System.Drawing.Size(400, 56);
             this.buttonBuyBussinesOrAction.TabIndex = 5;
-            this.buttonBuyBussinesOrAction.Text = "Покупка акций или бизнеса";
+            this.buttonBuyBussinesOrAction.Text = "Покупка акций";
             this.buttonBuyBussinesOrAction.UseVisualStyleBackColor = true;
             this.buttonBuyBussinesOrAction.Click += new System.EventHandler(this.buttonBuyBussinesOrAction_Click);
             // 
             // buttonSellBussinesOrAction
             // 
-            this.buttonSellBussinesOrAction.Location = new System.Drawing.Point(30, 588);
+            this.buttonSellBussinesOrAction.Location = new System.Drawing.Point(31, 519);
             this.buttonSellBussinesOrAction.Name = "buttonSellBussinesOrAction";
             this.buttonSellBussinesOrAction.Size = new System.Drawing.Size(400, 56);
             this.buttonSellBussinesOrAction.TabIndex = 6;
-            this.buttonSellBussinesOrAction.Text = "Продажа акций или бизнеса";
+            this.buttonSellBussinesOrAction.Text = "Продажа акций ";
             this.buttonSellBussinesOrAction.UseVisualStyleBackColor = true;
             this.buttonSellBussinesOrAction.Click += new System.EventHandler(this.buttonSellBussinesOrAction_Click);
             // 

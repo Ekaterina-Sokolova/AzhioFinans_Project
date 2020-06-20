@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="51b74c25b22a48628c8434f41dfdf420" Name="Diagram1">
+        <EntityTypeShape EntityType="AzhioFinans_ProjectModel.ConsultInvest" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzhioFinans_ProjectModel.ManageProperty" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzhioFinans_ProjectModel.RentProperty" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzhioFinans_ProjectModel.SellAction" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzhioFinans_ProjectModel.SellsAction" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="AzhioFinans_ProjectModel.FK_ConsultInvest_ManageProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="AzhioFinans_ProjectModel.FK_SellAction_ManageProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="AzhioFinans_ProjectModel.FK_SellsAction_SellAction" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

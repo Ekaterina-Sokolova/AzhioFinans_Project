@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AzhioFinans_ProjectModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConsultInvest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamesurnameSotr" Type="nvarchar(max)" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="PlaceInvest" Type="nvarchar(max)" />
+          <Property Name="ActualInvest" Type="int" Nullable="false" />
+          <Property Name="ColInvest" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ManageProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="TypeProp" Type="int" />
+          <Property Name="DateOfHouse" Type="nvarchar(max)" />
+          <Property Name="DateOfFloor" Type="nvarchar(max)" />
+          <Property Name="DedlineHouse" Type="nvarchar(max)" />
+          <Property Name="DedlineFloor" Type="nvarchar(max)" />
+          <Property Name="DateSellHouse" Type="nvarchar(max)" />
+          <Property Name="DateSellFloor" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RentProperty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="TypeProp" Type="int" Nullable="false" />
+          <Property Name="AddressHouse" Type="nvarchar(max)" />
+          <Property Name="PriceHouse" Type="nvarchar(max)" />
+          <Property Name="AddressFloor" Type="nvarchar(max)" />
+          <Property Name="PriceFloor" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SellAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="DateSell" Type="nvarchar(max)" />
+          <Property Name="PriceSell" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SellsAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAction" Type="int" Nullable="false" />
+          <Property Name="DateSells" Type="nvarchar(max)" />
+          <Property Name="PriceSells" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_ConsultInvest_ManageProperty">
+          <End Role="ManageProperty" Type="Self.ManageProperty" Multiplicity="1" />
+          <End Role="ConsultInvest" Type="Self.ConsultInvest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManageProperty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultInvest">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellAction_ManageProperty">
+          <End Role="ManageProperty" Type="Self.ManageProperty" Multiplicity="1" />
+          <End Role="SellAction" Type="Self.SellAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManageProperty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellAction">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellsAction_SellAction">
+          <End Role="SellAction" Type="Self.SellAction" Multiplicity="1" />
+          <End Role="SellsAction" Type="Self.SellsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellAction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellsAction">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AzhioFinans_ProjectModelContainer">
+          <EntitySet Name="ConsultInvest" EntityType="Self.ConsultInvest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManageProperty" EntityType="Self.ManageProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentProperty" EntityType="Self.RentProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellAction" EntityType="Self.SellAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellsAction" EntityType="Self.SellsAction" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ConsultInvest_ManageProperty" Association="Self.FK_ConsultInvest_ManageProperty">
+            <End Role="ManageProperty" EntitySet="ManageProperty" />
+            <End Role="ConsultInvest" EntitySet="ConsultInvest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellAction_ManageProperty" Association="Self.FK_SellAction_ManageProperty">
+            <End Role="ManageProperty" EntitySet="ManageProperty" />
+            <End Role="SellAction" EntitySet="SellAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellsAction_SellAction" Association="Self.FK_SellsAction_SellAction">
+            <End Role="SellAction" EntitySet="SellAction" />
+            <End Role="SellsAction" EntitySet="SellsAction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AzhioFinans_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ConsultInvest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamesurnameSotr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="PlaceInvest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActualInvest" Type="Int32" Nullable="false" />
+          <Property Name="ColInvest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ManageProperty" Relationship="Self.FK_ConsultInvest_ManageProperty" FromRole="ConsultInvest" ToRole="ManageProperty" />
+        </EntityType>
+        <EntityType Name="ManageProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeProp" Type="Int32" />
+          <Property Name="DateOfHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DedlineHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DedlineFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateSellHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateSellFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsultInvest" Relationship="Self.FK_ConsultInvest_ManageProperty" FromRole="ManageProperty" ToRole="ConsultInvest" />
+          <NavigationProperty Name="SellAction" Relationship="Self.FK_SellAction_ManageProperty" FromRole="ManageProperty" ToRole="SellAction" />
+        </EntityType>
+        <EntityType Name="RentProperty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeProp" Type="Int32" Nullable="false" />
+          <Property Name="AddressHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceHouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddressFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceFloor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SellAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="DateSell" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceSell" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ManageProperty" Relationship="Self.FK_SellAction_ManageProperty" FromRole="SellAction" ToRole="ManageProperty" />
+          <NavigationProperty Name="SellsAction" Relationship="Self.FK_SellsAction_SellAction" FromRole="SellAction" ToRole="SellsAction" />
+        </EntityType>
+        <EntityType Name="SellsAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAction" Type="Int32" Nullable="false" />
+          <Property Name="DateSells" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceSells" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SellAction" Relationship="Self.FK_SellsAction_SellAction" FromRole="SellsAction" ToRole="SellAction" />
+        </EntityType>
+        <Association Name="FK_ConsultInvest_ManageProperty">
+          <End Role="ManageProperty" Type="Self.ManageProperty" Multiplicity="1" />
+          <End Role="ConsultInvest" Type="Self.ConsultInvest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManageProperty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultInvest">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellAction_ManageProperty">
+          <End Role="ManageProperty" Type="Self.ManageProperty" Multiplicity="1" />
+          <End Role="SellAction" Type="Self.SellAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManageProperty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellAction">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellsAction_SellAction">
+          <End Role="SellAction" Type="Self.SellAction" Multiplicity="1" />
+          <End Role="SellsAction" Type="Self.SellsAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellAction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellsAction">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AzhioFinans_ProjectEntities9" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ConsultInvest" EntityType="Self.ConsultInvest" />
+          <EntitySet Name="ManageProperty" EntityType="Self.ManageProperty" />
+          <EntitySet Name="RentProperty" EntityType="Self.RentProperty" />
+          <EntitySet Name="SellAction" EntityType="Self.SellAction" />
+          <EntitySet Name="SellsAction" EntityType="Self.SellsAction" />
+          <AssociationSet Name="FK_ConsultInvest_ManageProperty" Association="Self.FK_ConsultInvest_ManageProperty">
+            <End Role="ManageProperty" EntitySet="ManageProperty" />
+            <End Role="ConsultInvest" EntitySet="ConsultInvest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellAction_ManageProperty" Association="Self.FK_SellAction_ManageProperty">
+            <End Role="ManageProperty" EntitySet="ManageProperty" />
+            <End Role="SellAction" EntitySet="SellAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellsAction_SellAction" Association="Self.FK_SellsAction_SellAction">
+            <End Role="SellAction" EntitySet="SellAction" />
+            <End Role="SellsAction" EntitySet="SellsAction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AzhioFinans_ProjectModelContainer" CdmEntityContainer="AzhioFinans_ProjectEntities9">
+          <EntitySetMapping Name="ConsultInvest">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.ConsultInvest">
+              <MappingFragment StoreEntitySet="ConsultInvest">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NamesurnameSotr" ColumnName="NamesurnameSotr" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="PlaceInvest" ColumnName="PlaceInvest" />
+                <ScalarProperty Name="ActualInvest" ColumnName="ActualInvest" />
+                <ScalarProperty Name="ColInvest" ColumnName="ColInvest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManageProperty">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.ManageProperty">
+              <MappingFragment StoreEntitySet="ManageProperty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="TypeProp" ColumnName="TypeProp" />
+                <ScalarProperty Name="DateOfHouse" ColumnName="DateOfHouse" />
+                <ScalarProperty Name="DateOfFloor" ColumnName="DateOfFloor" />
+                <ScalarProperty Name="DedlineHouse" ColumnName="DedlineHouse" />
+                <ScalarProperty Name="DedlineFloor" ColumnName="DedlineFloor" />
+                <ScalarProperty Name="DateSellHouse" ColumnName="DateSellHouse" />
+                <ScalarProperty Name="DateSellFloor" ColumnName="DateSellFloor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentProperty">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.RentProperty">
+              <MappingFragment StoreEntitySet="RentProperty">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="TypeProp" ColumnName="TypeProp" />
+                <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
+                <ScalarProperty Name="PriceHouse" ColumnName="PriceHouse" />
+                <ScalarProperty Name="AddressFloor" ColumnName="AddressFloor" />
+                <ScalarProperty Name="PriceFloor" ColumnName="PriceFloor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellAction">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.SellAction">
+              <MappingFragment StoreEntitySet="SellAction">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="DateSell" ColumnName="DateSell" />
+                <ScalarProperty Name="PriceSell" ColumnName="PriceSell" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellsAction">
+            <EntityTypeMapping TypeName="AzhioFinans_ProjectModel.SellsAction">
+              <MappingFragment StoreEntitySet="SellsAction">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAction" ColumnName="IdAction" />
+                <ScalarProperty Name="DateSells" ColumnName="DateSells" />
+                <ScalarProperty Name="PriceSells" ColumnName="PriceSells" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

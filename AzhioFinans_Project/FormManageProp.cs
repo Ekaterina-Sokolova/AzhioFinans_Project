@@ -16,6 +16,7 @@ namespace AzhioFinans_Project
         public FormManageProp()
         {
             InitializeComponent();
+            comboBoxTypeProp.SelectedIndex = 0;
             ShowManageProper();
         }
         public void ShowManageProper()

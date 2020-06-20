@@ -12,30 +12,21 @@ namespace AzhioFinans_Project
     using System;
     using System.Collections.Generic;
     
-    public partial class ManageProperty
+    public partial class SellAction
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ManageProperty()
+        public SellAction()
         {
-            this.ConsultInvest = new HashSet<ConsultInvest>();
-            this.SellAction = new HashSet<SellAction>();
+            this.SellsAction = new HashSet<SellsAction>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Patronymic { get; set; }
-        public Nullable<int> TypeProp { get; set; }
-        public string DateOfHouse { get; set; }
-        public string DateOfFloor { get; set; }
-        public string DedlineHouse { get; set; }
-        public string DedlineFloor { get; set; }
-        public string DateSellHouse { get; set; }
-        public string DateSellFloor { get; set; }
+        public int IdUser { get; set; }
+        public string DateSell { get; set; }
+        public string PriceSell { get; set; }
     
+        public virtual ManageProperty ManageProperty { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConsultInvest> ConsultInvest { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SellAction> SellAction { get; set; }
+        public virtual ICollection<SellsAction> SellsAction { get; set; }
     }
 }

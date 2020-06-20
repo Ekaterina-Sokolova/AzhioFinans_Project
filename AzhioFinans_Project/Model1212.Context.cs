@@ -13,10 +13,10 @@ namespace AzhioFinans_Project
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AzhioFinans_ProjectEntities4 : DbContext
+    public partial class AzhioFinans_ProjectEntities9 : DbContext
     {
-        public AzhioFinans_ProjectEntities4()
-            : base("name=AzhioFinans_ProjectEntities4")
+        public AzhioFinans_ProjectEntities9()
+            : base("name=AzhioFinans_ProjectEntities9")
         {
         }
     
@@ -25,7 +25,10 @@ namespace AzhioFinans_Project
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ConsultInvest> ConsultInvest { get; set; }
         public virtual DbSet<ManageProperty> ManageProperty { get; set; }
         public virtual DbSet<RentProperty> RentProperty { get; set; }
+        public virtual DbSet<SellAction> SellAction { get; set; }
+        public virtual DbSet<SellsAction> SellsAction { get; set; }
     }
 }

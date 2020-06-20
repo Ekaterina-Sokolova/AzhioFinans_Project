@@ -8,7 +8,7 @@ namespace AzhioFinans_Project
 {
     static class Program
     {
-        public static AzhioFinans_ProjectEntities4 ADb = new AzhioFinans_ProjectEntities4();
+        public static AzhioFinans_ProjectEntities9 ADb = new AzhioFinans_ProjectEntities9();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

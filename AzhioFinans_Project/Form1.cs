@@ -41,17 +41,20 @@ namespace AzhioFinans_Project
 
         private void buttonConsultInvest_Click(object sender, EventArgs e)
         {
-
+            Form formConsInv = new FormConsultInvest();
+            formConsInv.Show();
         }
 
         private void buttonBuyBussinesOrAction_Click(object sender, EventArgs e)
         {
-
+            Form formsell = new FormSellAction();
+            formsell.Show();
         }
 
         private void buttonSellBussinesOrAction_Click(object sender, EventArgs e)
         {
-
+            Form formsells = new FormSellsAction();
+            formsells.Show();
         }
     }
 }
